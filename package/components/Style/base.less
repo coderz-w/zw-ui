@@ -1,0 +1,83 @@
+@prefix: zw;
+
+// .@{prefix}-btn-ripple:after {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   left: -100%;
+//   top: 0;
+//   pointer-events: none;
+//   background: rgba(0, 0, 0, 20%);
+//   transform: translateX(100%);
+//   opacity: 0;
+//   transition: transform 300ms cubic-bezier(.38, 0, .24, 1), opacity 300ms linear
+// }
+
+// .@{prefix}-btn-ripple {
+//   position: relative;
+//   overflow: hidden;
+//   transform: translate3d(0, 0, 0);
+// }
+
+.text-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scrollbar(@size: 6px, @borderSize: 0px) {
+  // FINotificationRefox 等浏览器标准支持的滚动条样式设置
+  scrollbar-color: rgb(242 243 245) transparent;
+  scrollbar-width: thin;
+
+  // Safari/Chrome 中滚动条样式设置
+  &::-webkit-scrollbar {
+    width: @size;
+    height: @size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    background-clip: content-box;
+    border: @borderSize solid transparent;
+    border-radius: @size * 2 - 1px;
+  }
+}
+
+.icon-hover(@icon-hover-border-radius,@icon-hover-color-bg, @icon-bg-height) {
+  .@{prefix}-icon-hover {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    cursor: pointer;
+
+    .@{prefix}-icon {
+      position: relative;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-sizing: border-box;
+      display: block;
+      width: @icon-bg-height;
+      height: @icon-bg-height;
+      content: "";
+      background-color: transparent;
+      border-radius: @icon-hover-border-radius;
+      transition: background-color 0.1s linear;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover::before {
+      background-color: @icon-hover-color-bg;
+    }
+
+    &.@{prefix}-icon-hover-disabled::before {
+      opacity: 0;
+    }
+  }
+}
