@@ -1,7 +1,11 @@
 import type { ButtonProps } from '../Button';
+import type { SpaceProps } from '../Space';
+import type { MessageProps, MessageRef } from '../Message';
 // 全局定制组件props
 export interface ComponentConfig {
   Button?: Partial<ButtonProps>;
+  Space?: Partial<SpaceProps>;
+  Message?:Partial<MessageProps>
 }
 
 /**
@@ -36,4 +40,5 @@ export interface ConfigProviderProps {
    * @zh 全局配置组件内的空组件。
    * @en Empty component in component.
    */
+  messageRef?: React.RefObject<MessageRef>;
 }

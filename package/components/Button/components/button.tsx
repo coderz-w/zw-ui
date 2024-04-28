@@ -2,7 +2,6 @@ import React, { useContext, forwardRef, ReactNode, MouseEventHandler } from 'rea
 import { useMergeProps } from '../../hooks/';
 import { ConfigContext } from '../../ConfigProvider';
 import { useClassNames } from '../hooks';
-import { useStyles } from '../../hooks';
 // type
 import type { ButtonProps } from '../interface';
 
@@ -27,7 +26,6 @@ function Button(baseProps: ButtonProps, ref: React.LegacyRef<HTMLButtonElement> 
     iconOnly,
     onClick,
     long,
-    themeStyle,
     ...rest
   } = props;
 
@@ -44,9 +42,6 @@ function Button(baseProps: ButtonProps, ref: React.LegacyRef<HTMLButtonElement> 
     type,
     getPrefixCls
   });
-
-  // style
-  const { wrapperStyle } = useStyles<ButtonProps>({ style, themeStyle });
 
   const handleClick: MouseEventHandler = (event): void => {
     if (loading || disabled) {
@@ -66,27 +61,11 @@ function Button(baseProps: ButtonProps, ref: React.LegacyRef<HTMLButtonElement> 
   );
 
   const render = function () {
-    // if (href) {
-    //   return (
-    //     <BtnAnchor
-    //       classNames={wrapperCls}
-    //       InnerContent={InnerContent}
-    //       handleClick={handleClick}
-    //       ref={ref}
-    //       rest={rest}
-    //       anchorProps={anchorProps}
-    //       href={href}
-    //       disabled={disabled}
-    //       style={wrapperStyle}
-    //     />
-    //   );
-    // }
-
     return (
       <button
         {...rest}
         ref={ref}
-        style={wrapperStyle}
+        style={style}
         className={wrapperCls}
         type={htmlType}
         disabled={disabled}

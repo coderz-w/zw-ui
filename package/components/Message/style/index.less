@@ -1,0 +1,25 @@
+// Import statement remains the same
+@import (reference) "../../Style/base.less";
+
+@message-prefix-cls: ~"@{prefix}-message";
+
+.@{message-prefix-cls}-wrapper {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0;
+  right: 0;
+  width: auto;
+  padding: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: var(--z-index-message);
+
+  &-top {
+    top: 20px;
+  }
+  &-bottom {
+    bottom: 20px;
+  }
+}
